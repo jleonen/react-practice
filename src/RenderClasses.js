@@ -1,9 +1,10 @@
 import React from "react";
 import ClassInfo from "./ClassInfo";
+import "./RenderClasses.css";
 
 function RenderClass(props) {
   return (
-    <div>
+    <div className="container-grid">
       <ClassInfo
         name={props.class[0].name}
         ability={props.class[0].ability}
