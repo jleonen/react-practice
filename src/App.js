@@ -1,4 +1,5 @@
 import "./App.css";
+import RenderClass from "./RenderClasses";
 
 function App() {
   const classesFF = [
@@ -27,7 +28,7 @@ function App() {
       upgrade: "White Wizard",
     },
   ];
-  return <h2>Hello world</h2>;
+  return <RenderClass class={classesFF} />;
 }
 
 export default App;
