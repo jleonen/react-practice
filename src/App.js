@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const classesFF = [
+    {
+      id: "c1",
+      name: "Warrior",
+      ability: "Guard",
+      upgrade: "Knight",
+    },
+    {
+      id: "c2",
+      name: "Monk",
+      ability: "Kick",
+      upgrade: "Master",
+    },
+    {
+      id: "c3",
+      name: "Black Mage",
+      ability: "Fire",
+      upgrade: "Black Wizard",
+    },
+    {
+      id: "c4",
+      name: "White Mage",
+      ability: "Cure",
+      upgrade: "White Wizard",
+    },
+  ];
+  return <h2>Hello world</h2>;
 }
 
 export default App;
