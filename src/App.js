@@ -1,5 +1,6 @@
 import "./App.css";
 import RenderClass from "./RenderClasses";
+import ClassForm from "./ClassForm";
 
 function App() {
   const classesFF = [
@@ -28,7 +29,12 @@ function App() {
       upgrade: "White Wizard",
     },
   ];
-  return <RenderClass class={classesFF} />;
+  return (
+    <div>
+      <RenderClass class={classesFF} />;
+      <ClassForm />
+    </div>
+  );
 }
 
 export default App;
