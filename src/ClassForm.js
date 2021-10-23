@@ -1,13 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import "./ClassForm.css";
 
 const ClassForm = function () {
+  const [name, setName] = useState("");
+  const [newClass, setClass] = useState("");
   const classChangeHandler = function (event) {
     console.log(event.target.value);
+    setClass(event.target.value);
   };
 
   const nameChangeHandler = function (event) {
     console.log(event.target.value);
+    setName(event.target.value);
+  };
+
+  const submitHandler = (event) => {
+    event.preventDefault();
+
+    const userData = {
+      name: name,
+      class: newClass,
+    };
   };
 
   return (
