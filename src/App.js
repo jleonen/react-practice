@@ -29,10 +29,15 @@ function App() {
       upgrade: "White Wizard",
     },
   ];
+
+  const showUserInfo = (info) => {
+    console.log(info);
+  };
+
   return (
     <div>
       <RenderClass class={classesFF} />;
-      <ClassForm />
+      <ClassForm onInfoChange={showUserInfo} />
     </div>
   );
 }
