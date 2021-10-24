@@ -3,15 +3,21 @@ import "./ClassForm.css";
 
 const ClassForm = function (props) {
   const [name, setName] = useState("");
-  const [newClass, setClass] = useState("");
-  const classChangeHandler = function (event) {
-    console.log(event.target.value);
-    setClass(event.target.value);
+  const [newAbility, setAbility] = useState("");
+  const [upgrade, setUpgrade] = useState("");
+  const abilityChangeHandler = function (event) {
+    // console.log(event.target.value);
+    setAbility(event.target.value);
   };
 
   const nameChangeHandler = function (event) {
-    console.log(event.target.value);
+    // console.log(event.target.value);
     setName(event.target.value);
+  };
+
+  const upgradeChangeHandler = function (event) {
+    // console.log(event.target.value);
+    setUpgrade(event.target.value);
   };
 
   const submitHandler = (event) => {
@@ -19,12 +25,14 @@ const ClassForm = function (props) {
 
     const userData = {
       name: name,
-      class: newClass,
+      ability: newAbility,
+      upgrade: upgrade,
     };
 
     props.onInfoChange(userData);
     setName("");
-    setClass("");
+    setAbility("");
+    setUpgrade("");
   };
 
   return (
@@ -32,17 +40,22 @@ const ClassForm = function (props) {
       <h2>Choose your class</h2>
       <form onSubmit={submitHandler}>
         <div>
-          <label>Enter Name</label>
-          <input onChange={nameChangeHandler} />
+          <label>Enter Class Name</label>
+          <input value={name} onChange={nameChangeHandler} />
         </div>
         <div>
-          <label>Select your class</label>
-          <select onChange={classChangeHandler}>
+          <label>Select your ability</label>
+          <input value={newAbility} onChange={abilityChangeHandler}></input>
+          {/* <select onChange={classChangeHandler}>
             <option value="warrior">Warrior</option>
             <option value="monk">Monk</option>
             <option value="black mage">Black Mage</option>
             <option value="white mage">White Mage</option>
-          </select>
+          </select> */}
+        </div>
+        <div>
+          <label>Enter Upgraded Class</label>
+          <input value={upgrade} onChange={upgradeChangeHandler} />
         </div>
         <button type="submit">Submit class</button>
       </form>

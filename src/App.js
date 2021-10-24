@@ -1,6 +1,8 @@
 import "./App.css";
 import RenderClass from "./RenderClasses";
 import ClassForm from "./ClassForm";
+import { useState } from "react";
+import UserClasses from "./UserClasses";
 
 function App() {
   const classesFF = [
@@ -30,14 +32,18 @@ function App() {
     },
   ];
 
-  const showUserInfo = (info) => {
-    console.log(info);
+  const [classes, setClasses] = useState(classesFF);
+  const addClass = (classFF) => {
+    console.log(classFF);
+    setClasses((prevClass) => {
+      return [classFF, ...prevClass];
+    });
   };
 
   return (
     <div>
-      <RenderClass class={classesFF} />;
-      <ClassForm onInfoChange={showUserInfo} />
+      <UserClasses addInfo={addClass} />
+      <RenderClass items={classes} />;
     </div>
   );
 }
