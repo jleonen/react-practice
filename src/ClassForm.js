@@ -37,7 +37,7 @@ const ClassForm = function (props) {
 
   return (
     <div className="container">
-      <h2>Choose your class</h2>
+      <h2>Create your own class</h2>
       <form onSubmit={submitHandler}>
         <div>
           <label>Enter Class Name</label>
