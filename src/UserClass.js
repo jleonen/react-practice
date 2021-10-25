@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import "./UserClass.css";
+import styles from "./UserClass.module.css";
 
+let partyCount = 0;
+let heading = "Create your party. Maximum amount of members is 4.";
 const UserClass = function (props) {
   const [name, setName] = useState("");
   const [newClass, setClass] = useState("");
@@ -15,7 +17,7 @@ const UserClass = function (props) {
 
   const submitHandler = (event) => {
     event.preventDefault();
-
+    partyCount++;
     const userData = {
       name: name,
       class: newClass,
@@ -25,27 +27,42 @@ const UserClass = function (props) {
     props.onChangeData(userData);
     setName("");
     setClass("");
+
+    heading = partyCount >= 4 ? "Full party!" : heading;
   };
 
   return (
     <div className="container">
-      <h2>Create your party</h2>
+      <h2>{heading}</h2>
       <form onSubmit={submitHandler}>
         <div>
-          <label>Enter your name</label>
-          <input value={name} onChange={nameChangeHandler} />
+          <label className={partyCount >= 4 ? styles.hidden : ""}>
+            Enter your name
+          </label>
+          <input
+            className={partyCount >= 4 ? styles.hidden : ""}
+            value={name}
+            onChange={nameChangeHandler}
+          />
         </div>
         <div>
-          <label>Select your class</label>
+          <label className={partyCount >= 4 ? styles.hidden : ""}>
+            Select your class
+          </label>
 
-          <select onChange={classChangeHandler}>
+          <select
+            className={partyCount >= 4 ? styles.hidden : ""}
+            onChange={classChangeHandler}
+          >
             <option value="warrior">Warrior</option>
             <option value="monk">Monk</option>
             <option value="black mage">Black Mage</option>
             <option value="white mage">White Mage</option>
           </select>
         </div>
-        <button type="submit">Submit class</button>
+        <button className={partyCount >= 4 ? styles.hidden : ""} type="submit">
+          Submit class
+        </button>
       </form>
     </div>
   );

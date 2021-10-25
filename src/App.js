@@ -37,7 +37,6 @@ function App() {
   const partyMembers = [];
   const [classes, setClasses] = useState(classesFF);
   const addClass = (classFF) => {
-    console.log(classFF);
     setClasses((prevClass) => {
       return [classFF, ...prevClass];
     });
