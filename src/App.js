@@ -1,10 +1,10 @@
 import "./App.css";
-import RenderClass from "./RenderClasses";
+import RenderClass from "./Components/CreateClass/RenderClasses";
 // import ClassForm from "./ClassForm";
 import { useState } from "react";
-import UserClasses from "./UserClasses";
-import UserParty from "./UserParty";
-import RenderMembers from "./RenderMembers";
+import UserClasses from "./Components/CreateClass/UserClasses";
+import UserParty from "./Components/CreateParty/UserParty";
+import RenderMembers from "./Components/CreateParty/RenderMembers";
 
 function App() {
   const classesFF = [

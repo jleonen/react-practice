@@ -7,7 +7,7 @@ const UserParty = function (props) {
       ...data,
       id: Math.random().toString(),
     };
-    console.log(userData);
+    console.log(userData.type);
     props.onChangeMember(userData);
   };
 

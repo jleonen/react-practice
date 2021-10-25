@@ -7,6 +7,7 @@ const UserClasses = function (props) {
       ...data,
       id: Math.random().toString(),
     };
+
     props.addInfo(userData);
   };
 

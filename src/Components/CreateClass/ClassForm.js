@@ -27,6 +27,7 @@ const ClassForm = function (props) {
       name: name,
       ability: newAbility,
       upgrade: upgrade,
+      type: "create",
     };
 
     props.onInfoChange(userData);

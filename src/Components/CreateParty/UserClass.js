@@ -25,6 +25,7 @@ const UserClass = function (props) {
     };
 
     props.onChangeData(userData);
+
     setName("");
     setClass("");
 
