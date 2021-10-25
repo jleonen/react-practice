@@ -1,6 +1,6 @@
 import React from "react";
 import ClassInfo from "./ClassInfo";
-import "./RenderClasses.css";
+import "../UI/RenderInfo.css";
 
 function RenderClass(props) {
   return (

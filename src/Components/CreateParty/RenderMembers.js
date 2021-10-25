@@ -1,6 +1,6 @@
 import React from "react";
 import MemberInfo from "./MemberInfo";
-import "./RenderMembers.css";
+import "../UI/RenderInfo.css";
 
 const RenderMembers = function (props) {
   return (
