@@ -24,7 +24,7 @@ const Login = (props) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    valid && props.onLogin(username, password);
+    props.onLogin(username, password);
     setUsername("");
     setPassword("");
   };
@@ -49,6 +49,9 @@ const Login = (props) => {
           onChange={passwordHander}
         />
       </div>
+      <button type="submit">Login</button>
     </form>
   );
 };
+
+export default Login;

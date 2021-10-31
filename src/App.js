@@ -1,6 +1,7 @@
 import "./App.css";
 import RenderClass from "./Components/CreateClass/RenderClasses";
 // import ClassForm from "./ClassForm";
+import Login from "./Components/Login/Login";
 import { useState } from "react";
 import UserClasses from "./Components/CreateClass/UserClasses";
 import UserParty from "./Components/CreateParty/UserParty";
@@ -35,6 +36,12 @@ function App() {
   ];
 
   const partyMembers = [];
+  const [loggedIn, setLogin] = useState(false);
+
+  const loginHandler = () => {
+    console.log("Logged in");
+    setLogin(true);
+  };
   const [classes, setClasses] = useState(classesFF);
   const addClass = (classFF) => {
     setClasses((prevClass) => {
@@ -51,10 +58,11 @@ function App() {
 
   return (
     <div>
-      <UserClasses addInfo={addClass} />
-      <RenderClass items={classes} />;
-      <UserParty onChangeMember={renderMember} />
-      <RenderMembers items={member} />
+      <Login onLogin={loginHandler} />
+      {loggedIn && <UserClasses addInfo={addClass} />}
+      {loggedIn && <RenderClass items={classes} />}
+      {loggedIn && <UserParty onChangeMember={renderMember} />}
+      {loggedIn && <RenderMembers items={member} />}
     </div>
   );
 }
