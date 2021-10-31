@@ -6,6 +6,7 @@ import { useState } from "react";
 import UserClasses from "./Components/CreateClass/UserClasses";
 import UserParty from "./Components/CreateParty/UserParty";
 import RenderMembers from "./Components/CreateParty/RenderMembers";
+import MainHeader from "./Components/Header/MainHeader";
 
 function App() {
   const classesFF = [
@@ -42,6 +43,10 @@ function App() {
     console.log("Logged in");
     setLogin(true);
   };
+
+  const logoutHandler = () => {
+    setLogin(false);
+  };
   const [classes, setClasses] = useState(classesFF);
   const addClass = (classFF) => {
     setClasses((prevClass) => {
@@ -59,6 +64,7 @@ function App() {
   return (
     <div>
       {!loggedIn && <Login onLogin={loginHandler} />}
+      {loggedIn && <MainHeader login={loggedIn} onLogout={logoutHandler} />}
       {loggedIn && <UserClasses addInfo={addClass} />}
       {loggedIn && <RenderClass items={classes} />}
       {loggedIn && <UserParty onChangeMember={renderMember} />}
