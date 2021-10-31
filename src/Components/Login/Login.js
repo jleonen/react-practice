@@ -28,13 +28,13 @@ const Login = (props) => {
     setValidPass(password.length > 4);
   };
 
-  const validHandler = (event) => {
-    if (username.length > 4 && password.length > 4) {
-      setValid(true);
-    } else {
-      setValid(false);
-    }
-  };
+  //   const validHandler = (event) => {
+  //     if (username.length > 4 && password.length > 4) {
+  //       setValid(true);
+  //     } else {
+  //       setValid(false);
+  //     }
+  //   };
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -44,33 +44,40 @@ const Login = (props) => {
   };
 
   return (
-    <form onSubmit={submitHandler}>
-      <div>
-        <label>Username</label>
-        <input
-          className={!validUser ? style.error : ""}
-          type="text"
-          id="username"
-          value={username}
-          onChange={usernameHandler}
-          onBlur={validateUsername}
-        />
+    <div>
+      <h2 className={style.heading}>Enter login information</h2>
+      <form onSubmit={submitHandler} className={style.formContainer}>
+        <div>
+          <label>Username</label>
+          <input
+            className={!validUser ? style.error : ""}
+            type="text"
+            id="username"
+            value={username}
+            onChange={usernameHandler}
+            onBlur={validateUsername}
+          />
+        </div>
         {!validUser && <span>Invalid User!</span>}
-      </div>
-      <div>
-        <label>Password</label>
-        <input
-          className={!validPass ? style.error : ""}
-          type="text"
-          id="username"
-          value={password}
-          onChange={passwordHander}
-          onBlur={validatePassword}
-        />
+        <div>
+          <label>Password</label>
+          <input
+            className={!validPass ? style.error : ""}
+            type="text"
+            id="username"
+            value={password}
+            onChange={passwordHander}
+            onBlur={validatePassword}
+          />
+        </div>
         {!validPass && <span>Invalid Password!</span>}
-      </div>
-      <button type="submit">Login</button>
-    </form>
+        {valid && (
+          <button className={style.button} type="submit">
+            Get started!
+          </button>
+        )}
+      </form>
+    </div>
   );
 };
 
