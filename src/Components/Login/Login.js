@@ -11,6 +11,17 @@ const usernameReducer = (state, action) => {
   return { value: "", isValid: false };
 };
 
+const passwordReducer = (state, action) => {
+  if (action.type === "password") {
+    return { value: action.value, isValid: action.value.trim().length > 4 };
+  }
+
+  if (action.type === "blur") {
+    return { value: state.value, isValid: state.value.trim().length > 4 };
+  }
+  return { value: "", isValid: false };
+};
+
 const Login = (props) => {
   const [username, setUsername] = useState("");
   const [validUser, setValidUser] = useState(false);
@@ -23,25 +34,31 @@ const Login = (props) => {
     isValid: null,
   });
 
+  const [passwordState, dispatchPass] = useReducer(passwordReducer, {
+    value: "",
+    isValid: null,
+  });
+
   const usernameHandler = (event) => {
     // setUsername(event.target.value);
     dispatchUser({ type: "user", value: event.target.value });
 
-    setValid(usernameState.isValid && password.length > 4);
+    setValid(usernameState.isValid && passwordState.isValid);
   };
 
   const validateUsername = (event) => {
     dispatchUser({ type: "blur" });
   };
 
-  const passwordHander = (event) => {
-    setPassword(event.target.value);
+  const passwordHandler = (event) => {
+    // setPassword(event.target.value);
+    dispatchPass({ type: "password", value: event.target.value });
 
-    setValid(event.target.value.trim().length > 4 && usernameState.isValid);
+    setValid(passwordState.isValid && usernameState.isValid);
   };
 
   const validatePassword = () => {
-    setValidPass(password.length > 4);
+    dispatchPass({ type: "blur" });
   };
 
   //   const validHandler = (event) => {
@@ -54,7 +71,7 @@ const Login = (props) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    valid && props.onLogin(usernameState.value, password);
+    valid && props.onLogin(usernameState.value, passwordState.value);
     // setUsername("");
     // setPassword("");
   };
@@ -78,15 +95,15 @@ const Login = (props) => {
         <div>
           <label>Password</label>
           <input
-            className={!validPass ? style.error : ""}
+            className={passwordState.isValid === false ? style.error : ""}
             type="text"
-            id="username"
-            value={password}
-            onChange={passwordHander}
+            id="password"
+            value={passwordState.value}
+            onChange={passwordHandler}
             onBlur={validatePassword}
           />
         </div>
-        {!validPass && <span>Invalid Password!</span>}
+        {passwordState.isValid === false ? <span>Invalid Password!</span> : ""}
         {valid && (
           <button className={style.button} type="submit">
             Get started!
