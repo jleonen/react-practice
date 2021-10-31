@@ -1,9 +1,11 @@
 import React from "react";
 
+import style from "./Navigation.module.css";
+
 const Navigation = (props) => {
   return (
-    <nav>
-      <ul>
+    <nav className={style.headerContainer}>
+      <ul className={style.navContainer}>
         {props.isLoggedIn && (
           <li>
             <a href="/">Create Class</a>
@@ -16,7 +18,9 @@ const Navigation = (props) => {
         )}
         {props.isLoggedIn && (
           <li>
-            <button onClick={props.onLogout}>Logout</button>
+            <button className={style.btn} onClick={props.onLogout}>
+              Logout
+            </button>
           </li>
         )}
       </ul>

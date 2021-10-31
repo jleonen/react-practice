@@ -1,0 +1,28 @@
+.headerContainer {
+  display: flex;
+}
+
+.navContainer {
+  display: flex;
+  gap: 20px;
+  list-style-type: none;
+  align-items: self-end;
+}
+
+.navContainer li a {
+  text-decoration: none;
+  color: white;
+}
+
+.btn {
+  width: 116px;
+  border-radius: 12px;
+  height: 30px;
+  border: none;
+  background-color: #00b4d8;
+  font-size: 17px;
+}
+
+.btn:hover {
+  background-color: #caf0f8;
+}
