@@ -11,13 +11,21 @@ const Login = (props) => {
   const usernameHandler = (event) => {
     setUsername(event.target.value);
 
-    setValidUser(event.target.value.trim().length > 4);
+    setValid(event.target.value.trim().length > 4 && password.length > 4);
+  };
+
+  const validateUsername = (event) => {
+    setValidUser(username.length > 4);
   };
 
   const passwordHander = (event) => {
     setPassword(event.target.value);
 
-    setValidPass(event.target.value.trim().length > 4);
+    setValid(event.target.value.trim().length > 4 && username.length > 4);
+  };
+
+  const validatePassword = () => {
+    setValidPass(password.length > 4);
   };
 
   const validHandler = (event) => {
@@ -30,7 +38,7 @@ const Login = (props) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    validUser && validPass && props.onLogin(username, password);
+    valid && props.onLogin(username, password);
     setUsername("");
     setPassword("");
   };
@@ -45,6 +53,7 @@ const Login = (props) => {
           id="username"
           value={username}
           onChange={usernameHandler}
+          onBlur={validateUsername}
         />
         {!validUser && <span>Invalid User!</span>}
       </div>
@@ -56,6 +65,7 @@ const Login = (props) => {
           id="username"
           value={password}
           onChange={passwordHander}
+          onBlur={validatePassword}
         />
         {!validPass && <span>Invalid Password!</span>}
       </div>
