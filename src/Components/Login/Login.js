@@ -1,6 +1,7 @@
-import React, { useState, useReducer } from "react";
+import React, { useState, useReducer, useEffect } from "react";
 import style from "./Login.module.css";
 
+//USERNAME REDUCER
 const usernameReducer = (state, action) => {
   if (action.type === "user") {
     return { value: action.value, isValid: action.value.trim().length > 4 };
@@ -11,6 +12,7 @@ const usernameReducer = (state, action) => {
   return { value: "", isValid: false };
 };
 
+//PASSWORD REDUCER
 const passwordReducer = (state, action) => {
   if (action.type === "password") {
     return { value: action.value, isValid: action.value.trim().length > 4 };
@@ -23,10 +25,10 @@ const passwordReducer = (state, action) => {
 };
 
 const Login = (props) => {
-  const [username, setUsername] = useState("");
-  const [validUser, setValidUser] = useState(false);
-  const [password, setPassword] = useState("");
-  const [validPass, setValidPass] = useState(false);
+  // const [username, setUsername] = useState("");
+  // const [validUser, setValidUser] = useState(false);
+  // const [password, setPassword] = useState("");
+  // const [validPass, setValidPass] = useState(false);
   const [valid, setValid] = useState(false);
 
   const [usernameState, dispatchUser] = useReducer(usernameReducer, {
@@ -39,22 +41,38 @@ const Login = (props) => {
     isValid: null,
   });
 
+  const { isValid: usernameValid } = usernameState;
+  const { isValid: passwordValid } = passwordState;
+  useEffect(() => {
+    const inputTime = setTimeout(() => {
+      console.log("Updating now");
+      setValid(usernameValid && passwordValid);
+    }, 500);
+
+    return () => {
+      console.log("clearing time");
+      clearTimeout(inputTime);
+    };
+  }, [usernameValid, passwordValid]);
+
+  //USERNAME INPUT FUNCTIONS
   const usernameHandler = (event) => {
     // setUsername(event.target.value);
     dispatchUser({ type: "user", value: event.target.value });
 
-    setValid(usernameState.isValid && passwordState.isValid);
+    // setValid(usernameState.isValid && passwordState.isValid);
   };
 
   const validateUsername = (event) => {
     dispatchUser({ type: "blur" });
   };
 
+  //PASSWORD INPUT FUNCITONS
   const passwordHandler = (event) => {
     // setPassword(event.target.value);
     dispatchPass({ type: "password", value: event.target.value });
 
-    setValid(passwordState.isValid && usernameState.isValid);
+    // setValid(passwordState.isValid && usernameState.isValid);
   };
 
   const validatePassword = () => {
@@ -69,6 +87,7 @@ const Login = (props) => {
   //     }
   //   };
 
+  //FORM SUBMISSION FUNCTION
   const submitHandler = (event) => {
     event.preventDefault();
     valid && props.onLogin(usernameState.value, passwordState.value);

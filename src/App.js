@@ -58,7 +58,7 @@ function App() {
 
   return (
     <div>
-      <Login onLogin={loginHandler} />
+      {!loggedIn && <Login onLogin={loginHandler} />}
       {loggedIn && <UserClasses addInfo={addClass} />}
       {loggedIn && <RenderClass items={classes} />}
       {loggedIn && <UserParty onChangeMember={renderMember} />}
