@@ -1,5 +1,7 @@
 import React, { useState, useReducer, useEffect } from "react";
 import style from "./Login.module.css";
+import AuthContext from "../../store/AuthContext";
+import { useContext } from "react/cjs/react.development";
 
 //USERNAME REDUCER
 const usernameReducer = (state, action) => {
@@ -25,6 +27,7 @@ const passwordReducer = (state, action) => {
 };
 
 const Login = (props) => {
+  const ctx = useContext(AuthContext);
   // const [username, setUsername] = useState("");
   // const [validUser, setValidUser] = useState(false);
   // const [password, setPassword] = useState("");
@@ -90,7 +93,7 @@ const Login = (props) => {
   //FORM SUBMISSION FUNCTION
   const submitHandler = (event) => {
     event.preventDefault();
-    valid && props.onLogin(usernameState.value, passwordState.value);
+    valid && ctx.onLogin(usernameState.value, passwordState.value);
     // setUsername("");
     // setPassword("");
   };

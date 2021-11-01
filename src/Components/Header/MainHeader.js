@@ -6,7 +6,7 @@ const MainHeader = (props) => {
   return (
     <header className={style.headerContainer}>
       <h1 className={style.title}>Practice React Project</h1>
-      <Navigation isLoggedIn={props.login} onLogout={props.onLogout} />
+      <Navigation />
     </header>
   );
 };

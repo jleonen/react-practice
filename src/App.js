@@ -2,13 +2,15 @@ import "./App.css";
 import RenderClass from "./Components/CreateClass/RenderClasses";
 // import ClassForm from "./ClassForm";
 import Login from "./Components/Login/Login";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import UserClasses from "./Components/CreateClass/UserClasses";
 import UserParty from "./Components/CreateParty/UserParty";
 import RenderMembers from "./Components/CreateParty/RenderMembers";
 import MainHeader from "./Components/Header/MainHeader";
+import AuthContext from "./store/AuthContext";
 
 function App() {
+  const ctx = useContext(AuthContext);
   const classesFF = [
     {
       id: "c1",
@@ -37,16 +39,7 @@ function App() {
   ];
 
   const partyMembers = [];
-  const [loggedIn, setLogin] = useState(false);
 
-  const loginHandler = () => {
-    console.log("Logged in");
-    setLogin(true);
-  };
-
-  const logoutHandler = () => {
-    setLogin(false);
-  };
   const [classes, setClasses] = useState(classesFF);
   const addClass = (classFF) => {
     setClasses((prevClass) => {
@@ -63,12 +56,12 @@ function App() {
 
   return (
     <div>
-      {!loggedIn && <Login onLogin={loginHandler} />}
-      {loggedIn && <MainHeader login={loggedIn} onLogout={logoutHandler} />}
-      {loggedIn && <UserClasses addInfo={addClass} />}
-      {loggedIn && <RenderClass items={classes} />}
-      {loggedIn && <UserParty onChangeMember={renderMember} />}
-      {loggedIn && <RenderMembers items={member} />}
+      {!ctx.loggedIn && <Login />}
+      {ctx.loggedIn && <MainHeader />}
+      {ctx.loggedIn && <UserClasses addInfo={addClass} />}
+      {ctx.loggedIn && <RenderClass items={classes} />}
+      {ctx.loggedIn && <UserParty onChangeMember={renderMember} />}
+      {ctx.loggedIn && <RenderMembers items={member} />}
     </div>
   );
 }
