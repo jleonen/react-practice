@@ -7,16 +7,16 @@ let heading = "Create your party. Maximum amount of members is 4.";
 const UserClass = function (props) {
   const {
     input: name,
-    // setInput: setName,
     inputChangeHandler: nameChangeHandler,
     reset: resetName,
   } = useFormHandler();
   const {
     input: newClass,
-    // setInput: setClass,
     inputChangeHandler: classChangeHandler,
     reset: resetClass,
   } = useFormHandler();
+
+  //REPLACED WITH CUSTOM HOOK
   // const [name, setName] = useState("");
   // const [newClass, setClass] = useState("");
 
