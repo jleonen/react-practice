@@ -11,7 +11,7 @@ const UserParty = function (props) {
     props.onChangeMember(userData);
   };
 
-  return <UserClass onChangeData={renderData} />;
+  return <UserClass onChangeData={renderData} classes={props.classNames} />;
 };
 
 export default UserParty;

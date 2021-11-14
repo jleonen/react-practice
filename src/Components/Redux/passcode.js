@@ -31,6 +31,7 @@ const Passcode = () => {
     <div>
       {!valid && (
         <div>
+          <h2>Redux Practice</h2>
           <form onSubmit={loginHandler}>
             <label>Input passcode here for message </label>
             <input onChange={passCodeChangeHandler} />

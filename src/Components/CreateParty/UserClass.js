@@ -55,10 +55,10 @@ const UserClass = function (props) {
             className={partyCount >= 4 ? styles.hidden : ""}
             onChange={classChangeHandler}
           >
-            <option value="warrior">Warrior</option>
-            <option value="monk">Monk</option>
-            <option value="black mage">Black Mage</option>
-            <option value="white mage">White Mage</option>
+            <option>Choose a class</option>
+            {props.classes.map((item) => (
+              <option value={item.name}>{item.name}</option>
+            ))}
           </select>
         </div>
         <button className={partyCount >= 4 ? styles.hidden : ""} type="submit">
