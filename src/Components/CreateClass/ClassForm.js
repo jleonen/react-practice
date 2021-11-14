@@ -47,12 +47,6 @@ const ClassForm = function (props) {
         <div>
           <label>Select your ability</label>
           <input value={newAbility} onChange={abilityChangeHandler}></input>
-          {/* <select onChange={classChangeHandler}>
-            <option value="warrior">Warrior</option>
-            <option value="monk">Monk</option>
-            <option value="black mage">Black Mage</option>
-            <option value="white mage">White Mage</option>
-          </select> */}
         </div>
         <div>
           <label>Enter Upgraded Class</label>

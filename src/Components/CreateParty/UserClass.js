@@ -1,19 +1,32 @@
 import React, { useState } from "react";
 import styles from "./UserClass.module.css";
+import useFormHandler from "../../hooks/form-handler";
 
 let partyCount = 0;
 let heading = "Create your party. Maximum amount of members is 4.";
 const UserClass = function (props) {
-  const [name, setName] = useState("");
-  const [newClass, setClass] = useState("");
+  const {
+    input: name,
+    // setInput: setName,
+    inputChangeHandler: nameChangeHandler,
+    reset: resetName,
+  } = useFormHandler();
+  const {
+    input: newClass,
+    // setInput: setClass,
+    inputChangeHandler: classChangeHandler,
+    reset: resetClass,
+  } = useFormHandler();
+  // const [name, setName] = useState("");
+  // const [newClass, setClass] = useState("");
 
-  const nameChangeHandler = function (event) {
-    setName(event.target.value);
-  };
+  // const nameChangeHandler = function (event) {
+  //   setName(event.target.value);
+  // };
 
-  const classChangeHandler = function (event) {
-    setClass(event.target.value);
-  };
+  // const classChangeHandler = function (event) {
+  //   setClass(event.target.value);
+  // };
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -26,8 +39,10 @@ const UserClass = function (props) {
 
     props.onChangeData(userData);
 
-    setName("");
-    setClass("");
+    // setName("");
+    resetName();
+    //setClass("");
+    resetClass();
 
     heading = partyCount >= 4 ? "Full party!" : heading;
   };
