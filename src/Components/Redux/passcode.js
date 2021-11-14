@@ -1,5 +1,5 @@
-const passcode = () => {
+const Passcode = () => {
   return;
 };
 
-export default passcode;
+export default Passcode;

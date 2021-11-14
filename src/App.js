@@ -8,6 +8,8 @@ import UserParty from "./Components/CreateParty/UserParty";
 import RenderMembers from "./Components/CreateParty/RenderMembers";
 import MainHeader from "./Components/Header/MainHeader";
 import AuthContext from "./store/AuthContext";
+import { passActions } from "./store/index";
+import Message from "./Components/Redux/Message";
 
 function App() {
   const ctx = useContext(AuthContext);
@@ -62,6 +64,7 @@ function App() {
       {ctx.loggedIn && <RenderClass items={classes} />}
       {ctx.loggedIn && <UserParty onChangeMember={renderMember} />}
       {ctx.loggedIn && <RenderMembers items={member} />}
+      {ctx.loggedIn && <Message />}
     </div>
   );
 }

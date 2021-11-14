@@ -23,4 +23,6 @@ const store = configureStore({
 });
 
 export const passActions = passSlice.actions;
-export default passSlice.reducer;
+// export default passSlice.reducer;
+
+export default store;
