@@ -10,6 +10,7 @@ import MainHeader from "./Components/Header/MainHeader";
 import AuthContext from "./store/AuthContext";
 import { passActions } from "./store/index";
 import Message from "./Components/Redux/Message";
+import Passcode from "./Components/Redux/Passcode";
 
 function App() {
   const ctx = useContext(AuthContext);
@@ -64,6 +65,7 @@ function App() {
       {ctx.loggedIn && <RenderClass items={classes} />}
       {ctx.loggedIn && <UserParty onChangeMember={renderMember} />}
       {ctx.loggedIn && <RenderMembers items={member} />}
+      {ctx.loggedIn && <Passcode />}
       {ctx.loggedIn && <Message />}
     </div>
   );

@@ -10,16 +10,16 @@ const passSlice = createSlice({
   initialState: initialLogin,
   reducers: {
     login(state) {
-      state.isValid(true);
+      state.isValid = true;
     },
     logout(state) {
-      state.isValid(false);
+      state.isValid = false;
     },
   },
 });
 
 const store = configureStore({
-  reducer: passSlice.actions,
+  reducer: passSlice.reducer,
 });
 
 export const passActions = passSlice.actions;

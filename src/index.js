@@ -7,11 +7,11 @@ import { Provider } from "react-redux";
 import store from "./store/index";
 
 ReactDOM.render(
-  <Provider store={store}>
-    <AuthContextProvider>
+  <AuthContextProvider>
+    <Provider store={store}>
       <App />
-    </AuthContextProvider>
-  </Provider>,
+    </Provider>
+  </AuthContextProvider>,
 
   document.getElementById("root")
 );
