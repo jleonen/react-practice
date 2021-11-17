@@ -5,15 +5,10 @@ const useFormHandler = () => {
   const [validInput, setValidInput] = useState(true);
   //   const [className, setClassName] = useState("");
   //   const [upgrade, setUpgrade] = useState("");
-  const [formValid, setFormValid] = useState(true);
+  //const [formValid, setFormValid] = useState(true);
 
   const inputChangeHandler = (event) => {
     setInput(event.target.value);
-    // if (event.target.value.trim().length > 0) {
-    //   setValidInput(true);
-    // } else {
-    //   setValidInput(false);
-    // }
   };
 
   const validateValue = () => {
@@ -34,15 +29,7 @@ const useFormHandler = () => {
     reset,
     validInput,
     validateValue,
-    // className,
-    // setClassName,
-    // formValid,
-    // setFormValid,
-    // upgrade,
-    // setUpgrade,
     inputChangeHandler,
-    formValid,
-    setFormValid,
   };
 };
 
