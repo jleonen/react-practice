@@ -5,6 +5,7 @@ import useFormHandler from "../../hooks/form-handler";
 let partyCount = 0;
 let heading = "Create your party. Maximum amount of members is 4.";
 const UserClass = function (props) {
+  //name input
   const {
     input: name,
     inputChangeHandler: nameChangeHandler,
@@ -13,6 +14,7 @@ const UserClass = function (props) {
     reset: resetName,
   } = useFormHandler();
 
+  //class input
   const {
     input: newClass,
     inputChangeHandler: classChangeHandler,
@@ -42,7 +44,6 @@ const UserClass = function (props) {
       const userData = {
         name: name,
         class: newClass,
-        type: "party",
       };
       props.onChangeData(userData);
     }

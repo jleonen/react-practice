@@ -10,12 +10,12 @@ const Navigation = (props) => {
       <ul className={style.navContainer}>
         {ctx.loggedIn && (
           <li>
-            <a href="/">Create Class</a>
+            <a href="/createclass">Create Class</a>
           </li>
         )}
         {ctx.loggedIn && (
           <li>
-            <a href="/">Make Party</a>
+            <a href="/makeparty">Make Party</a>
           </li>
         )}
         {ctx.loggedIn && (

@@ -3,6 +3,7 @@ import useFormHandler from "../../hooks/form-handler";
 import styles from "./ClassForm.module.css";
 
 const ClassForm = function (props) {
+  //Name input
   const {
     input: name,
     inputChangeHandler: nameChangeHandler,
@@ -10,6 +11,8 @@ const ClassForm = function (props) {
     validInput: validName,
     validateValue: validateName,
   } = useFormHandler();
+
+  //Ability input
   const {
     input: newAbility,
     inputChangeHandler: abilityChangeHandler,
@@ -17,6 +20,8 @@ const ClassForm = function (props) {
     validateValue: validateAbility,
     reset: resetAbility,
   } = useFormHandler();
+
+  //Upgrade Input
   const {
     input: upgrade,
     inputChangeHandler: upgradeChangeHandler,
@@ -34,16 +39,6 @@ const ClassForm = function (props) {
   //   setAbility(event.target.value);
   // };
 
-  // const nameChangeHandler = function (event) {
-
-  //   setName(event.target.value);
-  // };
-
-  // const upgradeChangeHandler = function (event) {
-
-  //   setUpgrade(event.target.value);
-  // };
-
   const submitHandler = (event) => {
     event.preventDefault();
 
@@ -55,13 +50,13 @@ const ClassForm = function (props) {
       name: name,
       ability: newAbility,
       upgrade: upgrade,
-      type: "create",
     };
 
     const formValid =
       name.trim().length > 0 &&
       newAbility.trim().length > 0 &&
       upgrade.trim().length > 0;
+
     formValid && props.onInfoChange(userData);
     resetName("");
     resetAbility("");

@@ -18,6 +18,7 @@ const Passcode = () => {
     setError(false);
     if (passcode === "1111") {
       dispatch(passActions.login());
+      setPasscode("");
     } else {
       setError(true);
     }
