@@ -3,10 +3,6 @@ import useFormHandler from "../../hooks/form-handler";
 import "./ClassForm.css";
 
 const ClassForm = function (props) {
-  // const [validName, setValidName] = useState(true);
-  // const [validAbility, setValidAbility] = useState(true);
-  // const [validUpgrade, setValidUpgrade] = useState(true);
-
   const {
     input: name,
     inputChangeHandler: nameChangeHandler,
@@ -28,31 +24,6 @@ const ClassForm = function (props) {
     validateValue: validateUpgrade,
     reset: resetUpgrade,
   } = useFormHandler();
-
-  // const validateName = () => {
-  //   if (name.trim().length > 0) {
-  //     setValidName(true);
-  //   } else {
-  //     console.log("invalid name");
-  //     setValidName(false);
-  //   }
-  // };
-
-  // const validateAbility = () => {
-  //   if (newAbility.trim().length > 0) {
-  //     setValidAbility(true);
-  //   } else {
-  //     console.log("invalid ability");
-  //     setValidAbility(false);
-  //   }
-  // };
-  // const validateUpgrade = () => {
-  //   if (upgrade.trim().length > 0) {
-  //     setValidUpgrade(true);
-  //   } else {
-  //     setValidUpgrade(false);
-  //   }
-  // };
 
   //REPLACED WITH CUSTOM HOOK
   // const [name, setName] = useState("");

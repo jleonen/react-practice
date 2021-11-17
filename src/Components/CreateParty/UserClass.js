@@ -5,34 +5,39 @@ import useFormHandler from "../../hooks/form-handler";
 let partyCount = 0;
 let heading = "Create your party. Maximum amount of members is 4.";
 const UserClass = function (props) {
-  const [validName, setValidName] = useState(true);
-  const [validClass, setValidClass] = useState(true);
+  // const [validName, setValidName] = useState(true);
+  // const [validClass, setValidClass] = useState(true);
   const {
     input: name,
     inputChangeHandler: nameChangeHandler,
+    validInput: validName,
+    validateValue: validateName,
     reset: resetName,
   } = useFormHandler();
+
   const {
     input: newClass,
     inputChangeHandler: classChangeHandler,
+    validInput: validClass,
+    validateValue: validateClass,
     reset: resetClass,
   } = useFormHandler();
 
-  const validateName = () => {
-    if (name.trim().length > 0) {
-      setValidName(true);
-    } else {
-      setValidName(false);
-    }
-  };
+  // const validateName = () => {
+  //   if (name.trim().length > 0) {
+  //     setValidName(true);
+  //   } else {
+  //     setValidName(false);
+  //   }
+  // };
 
-  const validateClass = () => {
-    if (!newClass) {
-      setValidClass(false);
-    } else {
-      setValidClass(true);
-    }
-  };
+  // const validateClass = () => {
+  //   if (!newClass) {
+  //     setValidClass(false);
+  //   } else {
+  //     setValidClass(true);
+  //   }
+  // };
   //REPLACED WITH CUSTOM HOOK
   // const [name, setName] = useState("");
   // const [newClass, setClass] = useState("");
