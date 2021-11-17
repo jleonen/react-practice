@@ -12,3 +12,12 @@ form {
 .hidden {
   display: none;
 }
+
+.error {
+  color: salmon;
+  margin-left: 1rem;
+}
+
+.inputError {
+  background-color: salmon;
+}
