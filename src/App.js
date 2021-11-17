@@ -10,6 +10,7 @@ import MainHeader from "./Components/Header/MainHeader";
 import AuthContext from "./store/AuthContext";
 import Message from "./Components/Redux/Message";
 import Passcode from "./Components/Redux/Passcode";
+import useMemberHandler from "./hooks/member-handler";
 
 function App() {
   const ctx = useContext(AuthContext);
@@ -40,21 +41,10 @@ function App() {
     },
   ];
 
+  const { member: classes, addMember: addClass } = useMemberHandler(classesFF);
+
   const partyMembers = [];
-
-  const [classes, setClasses] = useState(classesFF);
-  const addClass = (classFF) => {
-    setClasses((prevClass) => {
-      return [classFF, ...prevClass];
-    });
-  };
-
-  const [member, setMember] = useState(partyMembers);
-  const renderMember = function (member) {
-    setMember((prevMember) => {
-      return [member, ...prevMember];
-    });
-  };
+  const { member, addMember: renderMember } = useMemberHandler(partyMembers);
 
   return (
     <div>
