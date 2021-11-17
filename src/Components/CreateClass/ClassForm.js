@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import useFormHandler from "../../hooks/form-handler";
-import "./ClassForm.css";
+import styles from "./ClassForm.module.css";
 
 const ClassForm = function (props) {
   const {
@@ -69,35 +69,44 @@ const ClassForm = function (props) {
   };
 
   return (
-    <div className="container">
+    <div className={styles.container}>
       <h2>Create your own class</h2>
       <form onSubmit={submitHandler}>
         <div>
           <label>Enter Class Name</label>
           <input
             value={name}
+            className={!validName && styles.errorInput}
             onChange={nameChangeHandler}
             onBlur={validateName}
           />
-          {!validName && <span>Name cannot be empty. </span>}
+          {!validName && (
+            <span className={styles.error}>Name cannot be empty. </span>
+          )}
         </div>
         <div>
           <label>Select your ability</label>
           <input
             value={newAbility}
+            className={!validAbility && styles.errorInput}
             onChange={abilityChangeHandler}
             onBlur={validateAbility}
           ></input>
-          {!validAbility && <span>Ability cannot be empty. </span>}
+          {!validAbility && (
+            <span className={styles.error}>Ability cannot be empty. </span>
+          )}
         </div>
         <div>
           <label>Enter Upgraded Class</label>
           <input
             value={upgrade}
+            className={!validUpgrade && styles.errorInput}
             onChange={upgradeChangeHandler}
             onBlur={validateUpgrade}
           />
-          {!validUpgrade && <span>Upgrade cannot be empty. </span>}
+          {!validUpgrade && (
+            <span className={styles.error}>Upgrade cannot be empty.</span>
+          )}
         </div>
         <button type="submit">Submit class</button>
       </form>

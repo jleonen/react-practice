@@ -45,8 +45,6 @@ const UserClass = function (props) {
         type: "party",
       };
       props.onChangeData(userData);
-    } else {
-      return;
     }
 
     resetName();
@@ -57,7 +55,7 @@ const UserClass = function (props) {
   };
 
   return (
-    <div className="container">
+    <div className={styles.container}>
       <h2>{heading}</h2>
       <form onSubmit={submitHandler}>
         <div className={partyCount >= 4 ? styles.hidden : ""}>
@@ -73,11 +71,7 @@ const UserClass = function (props) {
         </div>
         <div className={partyCount >= 4 ? styles.hidden : ""}>
           <label>Select your class</label>
-
-          <select
-            // className={partyCount >= 4 ? styles.hidden : ""}
-            onChange={classChangeHandler}
-          >
+          <select onChange={classChangeHandler}>
             <option value="">Choose a class</option>
             {props.classes.map((item) => (
               <option value={item.name}>{item.name}</option>

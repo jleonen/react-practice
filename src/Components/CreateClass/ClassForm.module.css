@@ -8,3 +8,12 @@
 form {
   line-height: 4;
 }
+
+.error {
+  color: salmon;
+  margin-left: 1rem;
+}
+
+.errorInput {
+  background-color: rgba(250, 128, 114, 0.527);
+}
