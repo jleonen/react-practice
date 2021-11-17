@@ -5,6 +5,8 @@ import useFormHandler from "../../hooks/form-handler";
 let partyCount = 0;
 let heading = "Create your party. Maximum amount of members is 4.";
 const UserClass = function (props) {
+  const [validName, setValidName] = useState(true);
+  const [validClass, setValidClass] = useState(true);
   const {
     input: name,
     inputChangeHandler: nameChangeHandler,
@@ -16,6 +18,21 @@ const UserClass = function (props) {
     reset: resetClass,
   } = useFormHandler();
 
+  const validateName = () => {
+    if (name.trim().length > 0) {
+      setValidName(true);
+    } else {
+      setValidName(false);
+    }
+  };
+
+  const validateClass = () => {
+    if (!newClass) {
+      setValidClass(false);
+    } else {
+      setValidClass(true);
+    }
+  };
   //REPLACED WITH CUSTOM HOOK
   // const [name, setName] = useState("");
   // const [newClass, setClass] = useState("");
@@ -30,14 +47,19 @@ const UserClass = function (props) {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    partyCount++;
-    const userData = {
-      name: name,
-      class: newClass,
-      type: "party",
-    };
-
-    props.onChangeData(userData);
+    validateName();
+    validateClass();
+    if (newClass && name.trim().length > 0) {
+      partyCount++;
+      const userData = {
+        name: name,
+        class: newClass,
+        type: "party",
+      };
+      props.onChangeData(userData);
+    } else {
+      return;
+    }
 
     // setName("");
     resetName();
@@ -60,6 +82,7 @@ const UserClass = function (props) {
             value={name}
             onChange={nameChangeHandler}
           />
+          {!validName && <span>Name cannot be blank</span>}
         </div>
         <div>
           <label className={partyCount >= 4 ? styles.hidden : ""}>
@@ -70,11 +93,12 @@ const UserClass = function (props) {
             className={partyCount >= 4 ? styles.hidden : ""}
             onChange={classChangeHandler}
           >
-            <option>Choose a class</option>
+            <option value="">Choose a class</option>
             {props.classes.map((item) => (
               <option value={item.name}>{item.name}</option>
             ))}
           </select>
+          {!validClass && <span>Choose a class!</span>}
         </div>
         <button className={partyCount >= 4 ? styles.hidden : ""} type="submit">
           Submit class
