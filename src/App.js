@@ -11,6 +11,8 @@ import AuthContext from "./store/AuthContext";
 import Message from "./Components/Redux/Message";
 import Passcode from "./Components/Redux/Passcode";
 import useMemberHandler from "./hooks/member-handler";
+import { Route, Routes } from "react-router-dom";
+import Wrapper from "./Components/UI/Wrapper";
 
 function App() {
   const ctx = useContext(AuthContext);
@@ -49,17 +51,37 @@ function App() {
   return (
     <div>
       {!ctx.loggedIn && <Login />}
+
       {ctx.loggedIn && <MainHeader />}
-      {ctx.loggedIn && <UserClasses addInfo={addClass} />}
-      {ctx.loggedIn && <RenderClass items={classes} />}
-      {ctx.loggedIn && (
+      <Route path="/createclass">
+        <UserClasses addInfo={addClass} />
+        <RenderClass items={classes} />
+      </Route>
+      <Route path="/makeparty">
         <UserParty onChangeMember={renderMember} classNames={classes} />
-      )}
-      {ctx.loggedIn && <RenderMembers items={member} />}
-      {ctx.loggedIn && <Passcode />}
-      {ctx.loggedIn && <Message />}
+        <RenderMembers items={member} />
+      </Route>
+      <Route path="/redux">
+        <Passcode />
+        <Message />
+      </Route>
     </div>
   );
 }
 
 export default App;
+
+{
+  /* <div>
+{!ctx.loggedIn && <Login />}
+{ctx.loggedIn && <MainHeader />}
+{ctx.loggedIn && <UserClasses addInfo={addClass} />}
+{ctx.loggedIn && <RenderClass items={classes} />}
+{ctx.loggedIn && (
+  <UserParty onChangeMember={renderMember} classNames={classes} />
+)}
+{ctx.loggedIn && <RenderMembers items={member} />}
+{ctx.loggedIn && <Passcode />}
+{ctx.loggedIn && <Message />}
+</div> */
+}

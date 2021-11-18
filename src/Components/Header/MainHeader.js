@@ -7,6 +7,7 @@ const MainHeader = (props) => {
     <header className={style.headerContainer}>
       <h1 className={style.title}>Practice React Project</h1>
       <Navigation />
+      {props.children}
     </header>
   );
 };
