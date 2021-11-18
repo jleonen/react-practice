@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 import style from "./Navigation.module.css";
 import AuthContext from "../../store/AuthContext";
@@ -11,17 +11,23 @@ const Navigation = (props) => {
       <ul className={style.navContainer}>
         {ctx.loggedIn && (
           <li>
-            <Link to="/createclass">Create Class</Link>
+            <NavLink activeClassName={style.selectedLink} to="/createclass">
+              Create Class
+            </NavLink>
           </li>
         )}
         {ctx.loggedIn && (
           <li>
-            <Link to="/makeparty">Make Party</Link>
+            <NavLink activeClassName={style.selectedLink} to="/makeparty">
+              Make Party
+            </NavLink>
           </li>
         )}
         {ctx.loggedIn && (
           <li>
-            <Link to="/redux">Redux Practice</Link>
+            <NavLink activeClassName={style.selectedLink} to="/redux">
+              Redux Practice
+            </NavLink>
           </li>
         )}
         {ctx.loggedIn && (

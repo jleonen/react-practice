@@ -26,3 +26,9 @@
 .btn:hover {
   background-color: #caf0f8;
 }
+
+.headerContainer a.selectedLink {
+  color: rgb(85, 200, 204);
+  padding-bottom: 0.2rem;
+  border-bottom: 2px solid rgb(85, 200, 204);
+}
