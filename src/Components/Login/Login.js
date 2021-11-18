@@ -2,7 +2,7 @@ import React, { useState, useReducer, useEffect } from "react";
 import style from "./Login.module.css";
 import AuthContext from "../../store/AuthContext";
 import { useContext } from "react/cjs/react.development";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 //USERNAME REDUCER
 const usernameReducer = (state, action) => {
@@ -29,6 +29,7 @@ const passwordReducer = (state, action) => {
 
 const Login = (props) => {
   const ctx = useContext(AuthContext);
+  const history = useHistory();
   // const [username, setUsername] = useState("");
   // const [validUser, setValidUser] = useState(false);
   // const [password, setPassword] = useState("");
@@ -49,12 +50,10 @@ const Login = (props) => {
   const { isValid: passwordValid } = passwordState;
   useEffect(() => {
     const inputTime = setTimeout(() => {
-      console.log("Updating now");
       setValid(usernameValid && passwordValid);
     }, 500);
 
     return () => {
-      console.log("clearing time");
       clearTimeout(inputTime);
     };
   }, [usernameValid, passwordValid]);
@@ -94,6 +93,7 @@ const Login = (props) => {
   //FORM SUBMISSION FUNCTION
   const submitHandler = (event) => {
     event.preventDefault();
+    console.log("Login submitted");
     valid && ctx.onLogin(usernameState.value, passwordState.value);
     // setUsername("");
     // setPassword("");
@@ -129,7 +129,7 @@ const Login = (props) => {
         {passwordState.isValid === false ? <span>Invalid Password!</span> : ""}
         {valid && (
           <button className={style.button} type="submit">
-            <Link to="/welcome">Get started! </Link>
+            Get started!
           </button>
         )}
       </form>
