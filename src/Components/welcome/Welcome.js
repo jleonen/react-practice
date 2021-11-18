@@ -1,5 +1,3 @@
-import MainHeader from "../Header/MainHeader";
-import Wrapper from "../UI/Wrapper";
 const Welcome = () => {
   return (
     <div>

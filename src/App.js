@@ -52,7 +52,7 @@ function App() {
 
   return (
     <Fragment>
-      <Route path="/">
+      <Route path="/" exact>
         <Redirect to="/Login" />
       </Route>
       {!ctx.loggedIn && (
@@ -61,24 +61,28 @@ function App() {
         </Route>
       )}
 
-      {ctx.loggedIn && <MainHeader />}
-      <Route path="/welcome">
-        <Welcome />
-      </Route>
-      <Switch>
-        <Route path="/createclass">
-          <UserClasses addInfo={addClass} />
-          <RenderClass items={classes} />
-        </Route>
-        <Route path="/makeparty">
-          <UserParty onChangeMember={renderMember} classNames={classes} />
-          <RenderMembers items={member} />
-        </Route>
-        <Route path="/redux">
-          <Passcode />
-          <Message />
-        </Route>
-      </Switch>
+      {ctx.loggedIn && (
+        <div>
+          <MainHeader />
+          <Route path="/welcome">
+            <Welcome />
+          </Route>
+          <Switch>
+            <Route path="/createclass">
+              <UserClasses addInfo={addClass} />
+              <RenderClass items={classes} />
+            </Route>
+            <Route path="/makeparty">
+              <UserParty onChangeMember={renderMember} classNames={classes} />
+              <RenderMembers items={member} />
+            </Route>
+            <Route path="/redux">
+              <Passcode />
+              <Message />
+            </Route>
+          </Switch>
+        </div>
+      )}
     </Fragment>
   );
 }

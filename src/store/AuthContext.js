@@ -12,9 +12,7 @@ export const AuthContextProvider = (props) => {
   const history = useHistory();
 
   const loginHandler = () => {
-    console.log("Logged in");
     setLogin(true);
-    console.log(loggedIn);
     history.push("/welcome");
   };
 
