@@ -99,9 +99,9 @@ const Login = (props) => {
   };
 
   return (
-    <div>
-      <h2 className={style.heading}>Enter login information</h2>
+    <div className={style.container}>
       <form onSubmit={submitHandler} className={style.formContainer}>
+        <h2 className={style.heading}>Enter login information</h2>
         <div>
           <label>Username</label>
           <input
