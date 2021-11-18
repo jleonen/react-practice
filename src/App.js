@@ -11,7 +11,7 @@ import AuthContext from "./store/AuthContext";
 import Message from "./Components/Redux/Message";
 import Passcode from "./Components/Redux/Passcode";
 import useMemberHandler from "./hooks/member-handler";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Redirect } from "react-router-dom";
 import Wrapper from "./Components/UI/Wrapper";
 
 function App() {
@@ -50,7 +50,14 @@ function App() {
 
   return (
     <div>
-      {!ctx.loggedIn && <Login />}
+      <Route path="/">
+        <Redirect to="/Login" />
+      </Route>
+      {!ctx.loggedIn && (
+        <Route path="/">
+          <Login />
+        </Route>
+      )}
 
       {ctx.loggedIn && <MainHeader />}
       <Route path="/createclass">

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Redirect, Route } from "react-router-dom";
 
 const AuthContext = React.createContext({
   loggedIn: false,
@@ -16,6 +17,9 @@ export const AuthContextProvider = (props) => {
 
   const logoutHandler = () => {
     setLogin(false);
+    <Route path="/makeparty">
+      <Redirect to="/Login" />
+    </Route>;
   };
 
   return (
