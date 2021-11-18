@@ -2,6 +2,7 @@ import React, { useState, useReducer, useEffect } from "react";
 import style from "./Login.module.css";
 import AuthContext from "../../store/AuthContext";
 import { useContext } from "react/cjs/react.development";
+import { Link } from "react-router-dom";
 
 //USERNAME REDUCER
 const usernameReducer = (state, action) => {
@@ -128,7 +129,7 @@ const Login = (props) => {
         {passwordState.isValid === false ? <span>Invalid Password!</span> : ""}
         {valid && (
           <button className={style.button} type="submit">
-            Get started!
+            <Link to="/welcome">Get started! </Link>
           </button>
         )}
       </form>

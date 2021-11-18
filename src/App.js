@@ -11,8 +11,10 @@ import AuthContext from "./store/AuthContext";
 import Message from "./Components/Redux/Message";
 import Passcode from "./Components/Redux/Passcode";
 import useMemberHandler from "./hooks/member-handler";
-import { Route, Routes, Redirect } from "react-router-dom";
+import { Route, Routes, Redirect, Switch } from "react-router-dom";
 import Wrapper from "./Components/UI/Wrapper";
+import Welcome from "./Components/welcome/Welcome";
+import { Fragment } from "react";
 
 function App() {
   const ctx = useContext(AuthContext);
@@ -49,30 +51,35 @@ function App() {
   const { member, addMember: renderMember } = useMemberHandler(partyMembers);
 
   return (
-    <div>
+    <Fragment>
       <Route path="/">
         <Redirect to="/Login" />
       </Route>
       {!ctx.loggedIn && (
-        <Route path="/">
+        <Route path="/Login">
           <Login />
         </Route>
       )}
 
       {ctx.loggedIn && <MainHeader />}
-      <Route path="/createclass">
-        <UserClasses addInfo={addClass} />
-        <RenderClass items={classes} />
+      <Route path="/welcome">
+        <Welcome />
       </Route>
-      <Route path="/makeparty">
-        <UserParty onChangeMember={renderMember} classNames={classes} />
-        <RenderMembers items={member} />
-      </Route>
-      <Route path="/redux">
-        <Passcode />
-        <Message />
-      </Route>
-    </div>
+      <Switch>
+        <Route path="/createclass">
+          <UserClasses addInfo={addClass} />
+          <RenderClass items={classes} />
+        </Route>
+        <Route path="/makeparty">
+          <UserParty onChangeMember={renderMember} classNames={classes} />
+          <RenderMembers items={member} />
+        </Route>
+        <Route path="/redux">
+          <Passcode />
+          <Message />
+        </Route>
+      </Switch>
+    </Fragment>
   );
 }
 
